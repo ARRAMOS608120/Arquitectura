@@ -14,7 +14,7 @@ switch (PERSISTENCIA_MENSAJES) {
 }
 
 function getMensajesDao() {
-    return mensajesDao 
+    return  mensajesDao 
 }
 
 module.exports = {

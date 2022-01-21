@@ -9,7 +9,7 @@ const {router,routerApi} = require('./rutas/rutas');
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-//app.use(express.static('public'))
+app.use(express.static('public'))
 
 require('dotenv').config()
 
@@ -54,7 +54,8 @@ io.on('connection', async socket => {
     })
 
     socket.emit('mensajes', await listarMensajes());
-
+  addAbortSignal+
+  
     socket.on('nuevoMensaje', async mensaje => {
         mensaje.fyh = new Date().toLocaleString()
         await insertarMensaje(mensaje)
@@ -85,6 +86,7 @@ const {puerto, modo} = parseArgs(commandLineArgs, optionsMinimist);
 /* --------- FORK  ---------- */
 //const { fork } = require('child_process')
 
+const { addAbortSignal } = require('stream');
 const cluster = require('cluster');
 
 if (modo == "FORK") {
@@ -105,9 +107,8 @@ if (modo == "FORK") {
 }
 
 function levantarServer(){
-  const server = app.listen(puerto, ()=>{
+    const server =http.listen(puerto, () => {
       logger.info(`Servidor express escuchando en el puerto ${puerto}`)
-  });
-  server.on('error', error=>logger.error(`Error en servidor: ${error}`));
-}
-
+    });
+    server.on('error', error=>logger.error(`Error en servidor: ${error}`));
+  }

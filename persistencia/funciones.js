@@ -1,8 +1,9 @@
-const getMensajesDao = require('./daos/daoMensajes');
-const getProductosDao = require('./daos/daoProductos')
+const {getMensajesDao} = require('./daos/daoMensajes');
+const {getProductosDao} = require('./daos/daoProductos')
 
-const sqlproductos = getProductosDao
-const sqlmensajes = getMensajesDao
+
+const sqlproductos = getProductosDao()
+const sqlmensajes = getMensajesDao()
 
 let mongoose = require('mongoose');
 
